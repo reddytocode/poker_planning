@@ -13,8 +13,9 @@ import { useState } from 'react'
 export default function Home() {
 
   const [playing, setPlaying] = useState(false)
-  const onStart: React.MouseEventHandler = (e) => {
-    setPlaying(true)
+
+  const onTogglePlaying: React.MouseEventHandler = (e) => {
+    setPlaying(!playing)
   };
 
   return (
@@ -29,12 +30,15 @@ export default function Home() {
               {playing ?
                 <Text fontSize='6xl'>Pick your cards</Text>
                 :
-                <Button colorScheme="blue" variant='ghost' onClick={onStart}>Start</Button>
+                <Button colorScheme="blue" variant='ghost' onClick={onTogglePlaying}>Start</Button>
               }
             </Center>
+            {playing && <Button onClick={onTogglePlaying} colorScheme="blue">Restart</Button>}
 
           </Box>
         </Center>
+
+
       </main>
     </>
   )
